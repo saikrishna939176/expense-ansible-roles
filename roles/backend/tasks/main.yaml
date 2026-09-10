@@ -1,8 +1,8 @@
 - name: disable default nodejs
-  ansible.builtin.command: dnf module disable nodejs -y
+  ansible.builtin.command: sudo dnf module disable nodejs -y
 
 - name: enable nodejs:20
-  ansible.builtin.command: dnf module enable nodejs:20 -y
+  ansible.builtin.command: sudo dnf module enable nodejs:20 -y
 
 - name: install nodejs
   ansible.builtin.dnf: # only works for Redhat family
@@ -26,7 +26,7 @@
 - name: install npm dependencies
   tags:
   - deployment
-  ansible.builtin.command: npm install
+  ansible.builtin.command: sudo npm install
   args:
     chdir: /app
 
